@@ -14,33 +14,40 @@ import { ApiProperty } from "@nestjs/swagger";
 import { ListingWhereUniqueInput } from "../../listing/base/ListingWhereUniqueInput";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
+import { IsJSONValue } from "../../validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
 class TripCreateInput {
   @ApiProperty({
-    required: false,
+    required: true,
     type: () => ListingWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => ListingWhereUniqueInput)
-  @IsOptional()
-  @Field(() => ListingWhereUniqueInput, {
-    nullable: true,
-  })
-  listing?: ListingWhereUniqueInput | null;
+  @Field(() => ListingWhereUniqueInput)
+  listing!: ListingWhereUniqueInput;
 
   @ApiProperty({
     required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  tripinfo?: InputJsonValue;
+
+  @ApiProperty({
+    required: true,
     type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
   @Type(() => UserWhereUniqueInput)
-  @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
-    nullable: true,
-  })
-  user?: UserWhereUniqueInput | null;
+  @Field(() => UserWhereUniqueInput)
+  user!: UserWhereUniqueInput;
 }
 
 export { TripCreateInput as TripCreateInput };

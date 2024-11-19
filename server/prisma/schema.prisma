@@ -43,11 +43,12 @@ model Listing {
 model Trip {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
-  listing   Listing? @relation(fields: [listingId], references: [id])
-  listingId String?
+  listing   Listing  @relation(fields: [listingId], references: [id])
+  listingId String
+  tripinfo  Json?
   updatedAt DateTime @updatedAt
-  user      User?    @relation(fields: [userId], references: [id])
-  userId    String?
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
 }
 
 model Wishlist {

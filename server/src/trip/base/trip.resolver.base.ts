@@ -91,17 +91,13 @@ export class TripResolverBase {
       data: {
         ...args.data,
 
-        listing: args.data.listing
-          ? {
-              connect: args.data.listing,
-            }
-          : undefined,
+        listing: {
+          connect: args.data.listing,
+        },
 
-        user: args.data.user
-          ? {
-              connect: args.data.user,
-            }
-          : undefined,
+        user: {
+          connect: args.data.user,
+        },
       },
     });
   }
@@ -120,17 +116,13 @@ export class TripResolverBase {
         data: {
           ...args.data,
 
-          listing: args.data.listing
-            ? {
-                connect: args.data.listing,
-              }
-            : undefined,
+          listing: {
+            connect: args.data.listing,
+          },
 
-          user: args.data.user
-            ? {
-                connect: args.data.user,
-              }
-            : undefined,
+          user: {
+            connect: args.data.user,
+          },
         },
       });
     } catch (error) {

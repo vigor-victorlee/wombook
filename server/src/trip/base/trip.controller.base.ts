@@ -50,17 +50,13 @@ export class TripControllerBase {
       data: {
         ...data,
 
-        listing: data.listing
-          ? {
-              connect: data.listing,
-            }
-          : undefined,
+        listing: {
+          connect: data.listing,
+        },
 
-        user: data.user
-          ? {
-              connect: data.user,
-            }
-          : undefined,
+        user: {
+          connect: data.user,
+        },
       },
       select: {
         createdAt: true,
@@ -72,6 +68,7 @@ export class TripControllerBase {
           },
         },
 
+        tripinfo: true,
         updatedAt: true,
 
         user: {
@@ -109,6 +106,7 @@ export class TripControllerBase {
           },
         },
 
+        tripinfo: true,
         updatedAt: true,
 
         user: {
@@ -147,6 +145,7 @@ export class TripControllerBase {
           },
         },
 
+        tripinfo: true,
         updatedAt: true,
 
         user: {
@@ -186,17 +185,13 @@ export class TripControllerBase {
         data: {
           ...data,
 
-          listing: data.listing
-            ? {
-                connect: data.listing,
-              }
-            : undefined,
+          listing: {
+            connect: data.listing,
+          },
 
-          user: data.user
-            ? {
-                connect: data.user,
-              }
-            : undefined,
+          user: {
+            connect: data.user,
+          },
         },
         select: {
           createdAt: true,
@@ -208,6 +203,7 @@ export class TripControllerBase {
             },
           },
 
+          tripinfo: true,
           updatedAt: true,
 
           user: {
@@ -254,6 +250,7 @@ export class TripControllerBase {
             },
           },
 
+          tripinfo: true,
           updatedAt: true,
 
           user: {

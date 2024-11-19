@@ -14,6 +14,9 @@ import { ApiProperty } from "@nestjs/swagger";
 import { ListingWhereUniqueInput } from "../../listing/base/ListingWhereUniqueInput";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
+import { IsJSONValue } from "../../validators";
+import { GraphQLJSON } from "graphql-type-json";
+import { InputJsonValue } from "../../types";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 
 @InputType()
@@ -28,7 +31,17 @@ class TripUpdateInput {
   @Field(() => ListingWhereUniqueInput, {
     nullable: true,
   })
-  listing?: ListingWhereUniqueInput | null;
+  listing?: ListingWhereUniqueInput;
+
+  @ApiProperty({
+    required: false,
+  })
+  @IsJSONValue()
+  @IsOptional()
+  @Field(() => GraphQLJSON, {
+    nullable: true,
+  })
+  tripinfo?: InputJsonValue;
 
   @ApiProperty({
     required: false,
@@ -40,7 +53,7 @@ class TripUpdateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  user?: UserWhereUniqueInput | null;
+  user?: UserWhereUniqueInput;
 }
 
 export { TripUpdateInput as TripUpdateInput };
